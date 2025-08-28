@@ -17,8 +17,9 @@ c) 3. Escalabilidade vs. Simplicidade
 Explicação: Soluções escaláveis exigem mais complexidade, mas tornam o sistema mais preparado para crescer. Soluções simples podem não suportar o aumento de usuários ou dados.
 
 4. Diagrama de Classes UML
+<img src="https://github.com/DanielDPereira/bertoti/blob/main/Engenharia%20de%20Software%20I/diagramaClassesUML2808.png?raw=true"/>
 
-5. Java:
+6. Java:
 ```java
 import java.util.ArrayList;
 import java.util.List;
