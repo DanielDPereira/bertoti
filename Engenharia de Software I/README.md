@@ -19,7 +19,7 @@ Explicação: Soluções escaláveis exigem mais complexidade, mas tornam o sist
 4. Diagrama de Classes UML
 <img src="https://github.com/DanielDPereira/bertoti/blob/main/Engenharia%20de%20Software%20I/diagramaClassesUML2808.png?raw=true"/>
 
-6. Java:
+5. Java:
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -169,6 +169,43 @@ public class SistemaBancario {
 
         Transacao t2 = new Transacao("Transferência", 300, conta1, conta2);
         t2.registrar();
+    }
+}
+
+```
+6. Testes:
+```
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+public class SistemaBancarioTest {
+
+    @Test
+    void testDeposito() {
+        SistemaBancario.ContaBancaria conta = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        conta.depositar(1000);
+        assertEquals(1000, conta.getSaldo());
+    }
+
+    @Test
+    void testSaque() {
+        SistemaBancario.ContaBancaria conta = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        conta.depositar(1000);
+        conta.sacar(200);
+        assertEquals(800, conta.getSaldo());
+    }
+
+    @Test
+    void testTransferencia() {
+        SistemaBancario.ContaBancaria conta1 = new SistemaBancario.ContaBancaria("12345", "Corrente");
+        SistemaBancario.ContaBancaria conta2 = new SistemaBancario.ContaBancaria("67890", "Poupança");
+
+        conta1.depositar(1000);
+        conta1.transferir(conta2, 300);
+
+        assertEquals(700, conta1.getSaldo()); // saldo da conta origem
+        assertEquals(300, conta2.getSaldo()); // saldo da conta destino
     }
 }
 
